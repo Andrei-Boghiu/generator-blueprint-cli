@@ -1,3 +1,3 @@
 # generator-blueprint-cli
 
-yes
+CLI tool for blueprinting files and folder structures
