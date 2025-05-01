@@ -1,11 +1,19 @@
 {
   "name": "generator-blueprint-cli",
   "version": "1.0.0",
-  "description": "CLI tool for blueprinting files and folder structures",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "CLI tool to scaffold file and folder structures",
+  "main": "build/main/index.js",
+  "files": [
+    "build"
+  ],
+  "types": "build/main/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && npm run postbuild",
+    "postbuild": "shx cp -r src/generators build/main/",
+    "generate:nest": "ts-node src/index.ts"
+  },
+  "bin": {
+    "blueprint": "./build/main/index.js"
   },
   "keywords": [
     "yeoman-generator",
@@ -20,11 +28,14 @@
     "url": "https://github.com/Andrei-Boghiu/generator-blueprint-cli.git"
   },
   "dependencies": {
+    "@inquirer/prompts": "^7.5.0",
+    "ts-node": "^10.9.2",
     "yeoman-generator": "^5.7.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "shx": "^0.4.0",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=16"
