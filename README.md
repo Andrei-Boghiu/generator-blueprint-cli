@@ -1,0 +1,3 @@
+# generator-blueprint-cli
+
+yes
